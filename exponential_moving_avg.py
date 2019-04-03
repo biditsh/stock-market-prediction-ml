@@ -1,7 +1,7 @@
 from stock import *
 
 
-window_size = 100
+window_size = 80
 N = train_data.size
 
 run_avg_predictions = []
@@ -12,7 +12,7 @@ mse_errors = []
 running_mean = 0.0
 run_avg_predictions.append(running_mean)
 
-decay = 0.1
+decay = 0.5
 
 for pred_idx in range(1,N):
     if pred_idx >= N:

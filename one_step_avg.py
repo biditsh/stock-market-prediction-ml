@@ -2,8 +2,7 @@ from stock import *
 
 # One step ahead averaging
 
-
-window_size = 100
+window_size = 80
 N = train_data.size
 std_avg_predictions = []
 std_avg_x = []
@@ -20,6 +19,7 @@ for pred_idx in range(window_size,N):
     mse_errors.append((std_avg_predictions[-1]-train_data[pred_idx])**2)
     std_avg_x.append(date)
 
+print ("tomrrow", std_avg_predictions[-1])
 print('MSE error for standard averaging: %.5f'%(0.5*np.mean(mse_errors)))
 
 plt.figure(figsize = (18,9))
