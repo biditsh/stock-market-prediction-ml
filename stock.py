@@ -8,12 +8,16 @@ import numpy as np
 import tensorflow as tf
 from sklearn.preprocessing import MinMaxScaler
 
-df = pd.read_csv(os.path.join('Stocks','hpq.us.txt'),delimiter=',',usecols=['Date','Open','High','Low','Close'])
-print('Loaded data from the Kaggle')
+tkr = input("Enter Ticker : ")
+
+data = DataReader(tkr,  'yahoo', dt.datetime(2008, 1, 1), dt.datetime(2019, 4, 3))
+data.to_csv(tkr+".txt", sep=',')
+
+df = pd.read_csv(tkr+'.txt',delimiter=',',usecols=['Date','High','Low','Open','Close', 'Volume', 'Adj Close'])
+print('Loaded data from Yahoo Finance API')
 
 df = df.sort_values('Date')
 print(df.head())
-
 # #Visualization
 
 # plt.figure(figsize = (18,9))
